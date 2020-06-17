@@ -103,7 +103,7 @@ Import the PowerShell modules from Modules gallery.
 
 4. Type a Name and select a **Runbook type PowerShell** and Create.
 
-    ![Create Runbook](media/image14.png)
+    ![Create Runbook blade](media/image14.png)
 
 5. Copy and paste the PowerShell script [CreateAKSPrivateDNSZoneLink](CreateAKSPrivateDNSZoneLink.sp1) into the Runbook.
 
@@ -111,4 +111,60 @@ Import the PowerShell modules from Modules gallery.
 
 7. Save and Publish the Runbook.
 
-    ![Create Runbook](media/image15.png)
+    ![Save Publish Runbook](media/image15.png)
+
+### Create Monitor Alert
+
+Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone is created from Azure Kubernetes Service.
+
+1. In the [portal](https://portal.azure.com/), select **Monitor**. In that section, choose **Alerts**.
+
+2. Click **New Alert Rule**. 
+
+    ![New Alert Rule](media/image17.png)
+
+3. The **Create Alert** pane appears. It has four parts: 
+    - The resource to which the alert applies
+    - The condition to check
+    - The action to take if the condition is true
+    - The details to name and describe the alert. 
+
+4. Define the alert condition by using the **Select Resource**.
+
+    ![Create Alert Rule](media/image18.png)
+
+5. Filter by choosing the **Subscription**, **Resource Type**, and required **Resource**.
+    - **Filter by subscription**: Select the subscription to be monitored.
+    - **Filter by resource type**: Select **Private DNS zones**.
+    - **Resource**: Click in your subscription name.
+
+    ![Select a Resource](media/image19.png)
+
+6. Back to **Create alert rule** click **Select condition**
+
+7. In Configure signal logic select the Signal name **Create or Update Private DNS Zone (Microsoft.Network/privateDnsZones)**
+
+    ![Configure Signal logic - Private DNS](media/image20.png)
+
+8. Next define the **Alert logic** with the following:
+    - **Event Level**: Informational
+    - **Status**: Succeeded
+    - **Event initiated by**: AzureContainerService
+
+    ![Configure Signal logic - Alert Logic](media/image21.png)
+
+    > Note: The **Event initiated by** you must select the AzureContainerService with the captal latters of each word. It's case sensitive.
+
+9. Back to **Create alert rule** click **Select action group**.
+
+10. Create an action group.
+
+    ![Create Action group](media/image22.png)
+
+11. Define a **Action group name**, **Short name** and select the resource group where it will be created. Define a **Action name** and select **Action Type** Automation Runbook.
+
+    ![Create Runbook](media/image23.png)
+
+12. In **Configure Runbook** select **Runbook source** User, select subscription. Now you have to select the **Automation account** created previously 
+
+    ![Create Runbook](media/image24.png)
