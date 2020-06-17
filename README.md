@@ -105,7 +105,7 @@ Import the PowerShell modules from Modules gallery.
 
     ![Create Runbook blade](media/image14.png)
 
-5. Copy and paste the PowerShell script [CreateAKSPrivateDNSZoneLink](CreateAKSPrivateDNSZoneLink.sp1) into the Runbook.
+5. Copy and paste the PowerShell script [CreateAKSPrivateDNSZoneLink](CreateAKSPrivateDNSZoneLink.ps1) into the Runbook.
 
 6. Replace $HubVNetID with the VNet resource Id where the "Private DNS Virtual network link" must be created.
 
