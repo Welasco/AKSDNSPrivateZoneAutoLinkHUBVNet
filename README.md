@@ -6,7 +6,7 @@ Table of Contents
 
 ## 1. Introduction
 
-[Hub and spoke architectures](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) are commonly used to deploy networks in Azure. In many of these deployments, DNS settings in the spoke VNets are configured to reference a central DNS forwarder to allow for on-premises and Azure-based DNS resolution. When deploying an AKS cluster into such a networking environment, there are some special considerations that must be taken into account.
+[Hub and spoke architectures](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) are commonly used to deploy networks in Azure. In many of these deployments, DNS settings in the spoke VNets are configured to reference a central DNS forwarder to allow for on-premises and Azure-based DNS resolution. When deploying a private AKS cluster into such a networking environment, there are some special considerations that must be taken into account.
 
 ![Private cluster hub and spoke](media/aks-private-hub-spoke.png)
 
@@ -20,10 +20,11 @@ Reference:
 
 Hub and spoke with custom DNS - https://docs.microsoft.com/en-us/azure/aks/private-clusters#hub-and-spoke-with-custom-dns
 
+This article will discuss option (3); more specifically it will focus on how to automate the creation of the link between the Hub VNET and the PrivateDNS Zone when deploying a private AKS cluster using Azure Monitor Alerts and Automation Runbooks
 
-## 2. How to deploy AKS Private cluster in Hub and spoke scenario with custom DNS
+## 2. Automating the creation of the link between the hub VNET and the PrivateDNS Zone
 
-Deploying AKS Private cluster in Hub and spoke scenario with custom DNS needs the following resources to be created:
+In order to automate the creation of the link between the Hub VNET and the PrivateDNS Zone we need to create the following resources before creating the Private AKS Cluster:
 
 - Azure Automation Account
     - Runbook with Run as account
@@ -31,15 +32,13 @@ Deploying AKS Private cluster in Hub and spoke scenario with custom DNS needs th
     - Action Group
     - Alert Rule
 
-During the creation of a AKS Private cluster a Private DNS Zone will be created. This Private DNS Zone must be linked to the HUB VNet before the AKS Cluster deployment has finished to allow the custom DNS Server to resolve names under this Private DNS Zone.
-
 In this process Azure Monitor will log an alert for the new new Private DNS Zone and will trigger a Runbook to create a "Private DNS Virtual network link" to the HUB VNet.
 
 ### Creating Azure Automation Account
 
 1. In the [portal](https://portal.azure.com), Click the **Create a resource** button found in the upper left corner of Azure portal.
 
-2. Select **IT & Management Tools**, and then select **Automation**. You can also search for Automation Accounts and create.
+2. Select **IT & Management Tools**, and then select **Automation**. You can also search for "Automation Accounts" and create it from there.
 
     ![Create Automation Account](media/image1.png)
 
@@ -161,11 +160,11 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
 
     ![Create Action group](media/image22.png)
 
-11. Define a **Action group name**, **Short name** and select the resource group where it will be created. Define a **Action name** and select **Action Type** Automation Runbook.
+11. Define a **Action group name**, **Short name** and select the resource group where it will be created. Define an **Action name** and select **Action Type** Automation Runbook.
 
     ![Create Runbook](media/image23.png)
 
-12. In **Configure Runbook** select **Runbook source** User, select subscription. Now in **Automation Account** you have to select the **Automation account** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account). In **Runbook** select the **Runbook** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-runbook). Make sure **Enable the common alert schema** is set to No.
+12. In **Configure Runbook** select **Runbook source** User, select the subscription where the runbook was created in. Now in **Automation Account** you have to select the **Automation account** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account). In **Runbook** select the **Runbook** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-runbook). Make sure **Enable the common alert schema** is set to No.
 
     ![Create Runbook](media/image24.png)
 
