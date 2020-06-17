@@ -165,6 +165,6 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
 
     ![Create Runbook](media/image23.png)
 
-12. In **Configure Runbook** select **Runbook source** User, select subscription. Now you have to select the **Automation account** [created previously ](AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account)
-
+12. In **Configure Runbook** select **Runbook source** User, select subscription. Now you have to select the **Automation account** [created previously ](/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account)
+https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account
     ![Create Runbook](media/image24.png)
