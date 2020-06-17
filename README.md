@@ -45,7 +45,7 @@ In this process Azure Monitor will log an alert for the new new Private DNS Zone
 
 3. Enter the account information, including the selected account name. For **Create Azure Run As account**, choose **Yes** so that the artifacts to simplify authentication to Azure are enabled automatically. When the information is complete, click **Create** to start the Automation account deployment.
 
-    ![Add Autmation Account](media/image2.png)
+    ![Add Autmation Account](media/image2-resize.png)
 
 4. When the deployment has completed, click **All Services**.
 
@@ -73,7 +73,7 @@ Import the PowerShell modules from Modules gallery.
 
 5. Wait until the module has been imported.
 
-    ![Wait Az.Account Module](media/image5.png)
+    ![Wait Az.Account Module](media/image5-resize.png)
 
 6. You can track the progress selecting Modules
 
@@ -103,7 +103,7 @@ Import the PowerShell modules from Modules gallery.
 
 4. Type a Name and select a **Runbook type PowerShell** and Create.
 
-    ![Create Runbook blade](media/image14.png)
+    ![Create Runbook blade](media/image14-resize.png)
 
 5. Copy and paste the PowerShell script [CreateAKSPrivateDNSZoneLink](CreateAKSPrivateDNSZoneLink.ps1) into the Runbook.
 
@@ -167,7 +167,7 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
 
 12. In **Configure Runbook** select **Runbook source** User, select subscription. Now in **Automation Account** you have to select the **Automation account** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account). In **Runbook** select the **Runbook** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-runbook). Make sure **Enable the common alert schema** is set to No.
 
-    ![Create Runbook](media/image24.png)
+    ![Create Runbook](media/image24-resize.png)
 
 13. Back to **Create alert rule** define a **Alert rule name** and click Create alert rule.
 
