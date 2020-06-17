@@ -40,9 +40,75 @@ In this process Azure Monitor will log an alert for the new new Private DNS Zone
 1. In the [portal](https://portal.azure.com), Click the **Create a resource** button found in the upper left corner of Azure portal.
 
 2. Select **IT & Management Tools**, and then select **Automation**. You can also search for Automation Accounts and create.
-![Create Automation Account](media/image1.png)
+
+    ![Create Automation Account](media/image1.png)
 
 3. Enter the account information, including the selected account name. For **Create Azure Run As account**, choose **Yes** so that the artifacts to simplify authentication to Azure are enabled automatically. When the information is complete, click **Create** to start the Automation account deployment.
-![Add Autmation Account](media/image2.png)
+
+    ![Add Autmation Account](media/image2.png)
 
 4. When the deployment has completed, click **All Services**.
+
+5. Select **Automation Accounts** and then choose the Automation account you've created.
+
+### Importing Azure PowerShell Modules
+
+The Runbook requires two Azure PowerShell modules:
+- Az.Accounts
+- Az.PrivateDns
+
+Import the PowerShell modules from Modules gallery.
+
+1. In the Azure portal, from your Automation account.
+
+2. Select Modules gallary.
+
+3. Search for Az.Account.
+
+    ![Search Az.Account Module](media/image3.png)
+
+4. Import Az.Account module.
+
+    ![Import Az.Account Module](media/image4.png)
+
+5. Wait until the module has been imported.
+
+    ![Wait Az.Account Module](media/image5.png)
+
+6. You can track the progress selecting Modules
+
+    ![Track Az.Account Module](media/image8.png)
+
+7. Import Az.PrivateDns module.
+
+8. Search for Az.PrivateDns.
+
+    ![Search Az.PrivateDns Module](media/image6.png)
+
+9. Import Az.PrivateDns module.
+
+    ![Import Az.PrivateDns Module](media/image7.png)
+
+10. Wait until the module has been imported.
+
+### Create Runbook
+
+1. In the Azure portal, from your Automation account.
+
+2. Select **Runbooks** under **Process Automation** to open the list of runbooks.
+
+3. Click **Create a runbook**.
+
+    ![Create a new Runbook](media/image13.png)
+
+4. Type a Name and select a **Runbook type PowerShell** and Create.
+
+    ![Create Runbook](media/image14.png)
+
+5. Copy and paste the PowerShell script [CreateAKSPrivateDNSZoneLink](CreateAKSPrivateDNSZoneLink.sp1) into the Runbook.
+
+6. Replace $HubVNetID with the VNet resource Id where the "Private DNS Virtual network link" must be created.
+
+7. Save and Publish the Runbook.
+
+    ![Create Runbook](media/image15.png)
