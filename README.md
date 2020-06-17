@@ -44,7 +44,7 @@ In this process Azure Monitor will log an alert for the new new Private DNS Zone
 
 3. Enter the account information, including the selected account name. For **Create Azure Run As account**, choose **Yes** so that the artifacts to simplify authentication to Azure are enabled automatically. When the information is complete, click **Create** to start the Automation account deployment.
 
-    ![Add Autmation Account](media/image2.png)
+    ![Add Autmation Account](media/image2-resize.png)
 
 4. When the deployment has completed, click **All Services**.
 
@@ -72,7 +72,7 @@ Import the PowerShell modules from Modules gallery.
 
 5. Wait until the module has been imported.
 
-    ![Wait Az.Account Module](media/image5.png)
+    ![Wait Az.Account Module](media/image5-resize.png)
 
 6. You can track the progress selecting Modules
 
@@ -102,7 +102,7 @@ Import the PowerShell modules from Modules gallery.
 
 4. Type a Name and select a **Runbook type PowerShell** and Create.
 
-    ![Create Runbook blade](media/image14.png)
+    ![Create Runbook blade](media/image14-resize.png)
 
 5. Copy and paste the PowerShell script [CreateAKSPrivateDNSZoneLink](CreateAKSPrivateDNSZoneLink.ps1) into the Runbook.
 
@@ -137,20 +137,20 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
     - **Filter by resource type**: Select **Private DNS zones**.
     - **Resource**: Click in your subscription name.
 
-    ![Select a Resource](media/image19.png)
+    ![Select a Resource](media/image19-resize.png)
 
 6. Back to **Create alert rule** click **Select condition**
 
 7. In Configure signal logic select the Signal name **Create or Update Private DNS Zone (Microsoft.Network/privateDnsZones)**
 
-    ![Configure Signal logic - Private DNS](media/image20.png)
+    ![Configure Signal logic - Private DNS](media/image20-resize.png)
 
 8. Next define the **Alert logic** with the following:
     - **Event Level**: Informational
     - **Status**: Succeeded
     - **Event initiated by**: AzureContainerService
 
-    ![Configure Signal logic - Alert Logic](media/image21.png)
+    ![Configure Signal logic - Alert Logic](media/image21-resize.png)
 
     > Note: The **Event initiated by** you must select the AzureContainerService with the captal latters of each word. It's case sensitive.
 
@@ -158,15 +158,15 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
 
 10. Create an action group.
 
-    ![Create Action group](media/image22.png)
+    ![Create Action group](media/image22-resize.png)
 
 11. Define a **Action group name**, **Short name** and select the resource group where it will be created. Define an **Action name** and select **Action Type** Automation Runbook.
 
-    ![Create Runbook](media/image23.png)
+    ![Create Runbook](media/image23-resize.png)
 
 12. In **Configure Runbook** select **Runbook source** User, select the subscription where the runbook was created in. Now in **Automation Account** you have to select the **Automation account** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account). In **Runbook** select the **Runbook** [you created](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-runbook). Make sure **Enable the common alert schema** is set to No.
 
-    ![Create Runbook](media/image24.png)
+    ![Create Runbook](media/image24-resize.png)
 
 13. Back to **Create alert rule** define a **Alert rule name** and click Create alert rule.
 
