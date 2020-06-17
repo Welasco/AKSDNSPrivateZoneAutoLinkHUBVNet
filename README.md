@@ -169,3 +169,7 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
 
     ![Create Runbook](media/image24.png)
 
+13. Back to **Create alert rule** define a **Alert rule name** and click Create alert rule.
+
+    ![Create Runbook](media/image25.png)
+
