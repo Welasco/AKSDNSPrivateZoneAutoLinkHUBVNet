@@ -138,20 +138,20 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
     - **Filter by resource type**: Select **Private DNS zones**.
     - **Resource**: Click in your subscription name.
 
-    ![Select a Resource](media/image19.png)
+    ![Select a Resource](media/image19-resize.png)
 
 6. Back to **Create alert rule** click **Select condition**
 
 7. In Configure signal logic select the Signal name **Create or Update Private DNS Zone (Microsoft.Network/privateDnsZones)**
 
-    ![Configure Signal logic - Private DNS](media/image20.png)
+    ![Configure Signal logic - Private DNS](media/image20-resize.png)
 
 8. Next define the **Alert logic** with the following:
     - **Event Level**: Informational
     - **Status**: Succeeded
     - **Event initiated by**: AzureContainerService
 
-    ![Configure Signal logic - Alert Logic](media/image21.png)
+    ![Configure Signal logic - Alert Logic](media/image21-resize.png)
 
     > Note: The **Event initiated by** you must select the AzureContainerService with the captal latters of each word. It's case sensitive.
 
@@ -159,7 +159,7 @@ Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone 
 
 10. Create an action group.
 
-    ![Create Action group](media/image22.png)
+    ![Create Action group](media/image22-resize.png)
 
 11. Define a **Action group name**, **Short name** and select the resource group where it will be created. Define a **Action name** and select **Action Type** Automation Runbook.
 
