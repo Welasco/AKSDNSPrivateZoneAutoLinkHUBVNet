@@ -4,6 +4,18 @@ Deploying private Azure Kubernetes Service cluster in Hub and spoke scenario wit
 Table of Contents
 =================
 
+1. [Introduction](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#1-introduction)
+
+2. [Automating the creation of the link between the hub VNET and the PrivateDNS Zone](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#2-automating-the-creation-of-the-link-between-the-hub-vnet-and-the-privatedns-zone)
+
+    2.1 [Creating Azure Automation Account](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account)
+
+    2.2 [Importing Azure PowerShell Modules](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#importing-azure-powershell-modules)
+
+    2.3 [Create Runbook](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-runbook)
+
+    2.4 [Create Monitor Alert](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-monitor-alert)
+
 ## 1. Introduction
 
 [Hub and spoke architectures](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) are commonly used to deploy networks in Azure. In many of these deployments, DNS settings in the spoke VNets are configured to reference a central DNS forwarder to allow for on-premises and Azure-based DNS resolution. When deploying a private AKS cluster into such a networking environment, there are some special considerations that must be taken into account.
@@ -34,7 +46,7 @@ In order to automate the creation of the link between the Hub VNET and the Priva
 
 In this process Azure Monitor will log an alert for the new new Private DNS Zone and will trigger a Runbook to create a "Private DNS Virtual network link" to the HUB VNet.
 
-### Creating Azure Automation Account
+### 2.1 Creating Azure Automation Account
 
 1. In the [portal](https://portal.azure.com), Click the **Create a resource** button found in the upper left corner of Azure portal.
 
@@ -50,7 +62,7 @@ In this process Azure Monitor will log an alert for the new new Private DNS Zone
 
 5. Select **Automation Accounts** and then choose the Automation account you've created.
 
-### Importing Azure PowerShell Modules
+### 2.2 Importing Azure PowerShell Modules
 
 The Runbook requires two Azure PowerShell modules:
 - Az.Accounts
@@ -90,7 +102,7 @@ Import the PowerShell modules from Modules gallery.
 
 10. Wait until the module has been imported.
 
-### Create Runbook
+### 2.3 Create Runbook
 
 1. In the Azure portal, from your Automation account.
 
@@ -112,7 +124,7 @@ Import the PowerShell modules from Modules gallery.
 
     ![Save Publish Runbook](media/image15.png)
 
-### Create Monitor Alert
+### 2.4 Create Monitor Alert
 
 Create a new Alert rule to trigger the Runbook everytime a new Private Dns zone is created from Azure Kubernetes Service.
 
