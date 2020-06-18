@@ -8,13 +8,13 @@ Table of Contents
 
 2. [Automating the creation of the link between the hub VNET and the PrivateDNS Zone](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#2-automating-the-creation-of-the-link-between-the-hub-vnet-and-the-privatedns-zone)
 
-    2.1 [Creating Azure Automation Account](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#creating-azure-automation-account)
+    2.1 [Creating Azure Automation Account](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#21-creating-azure-automation-account)
 
-    2.2 [Importing Azure PowerShell Modules](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#importing-azure-powershell-modules)
+    2.2 [Importing Azure PowerShell Modules](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#22-importing-azure-powershell-modules)
 
-    2.3 [Create Runbook](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-runbook)
+    2.3 [Create Runbook](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#23-create-runbook)
 
-    2.4 [Create Monitor Alert](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#create-monitor-alert)
+    2.4 [Create Monitor Alert](https://github.com/Welasco/AKSDNSPrivateZoneAutoLinkHUBVNet#24-create-monitor-alert)
 
 ## 1. Introduction
 
